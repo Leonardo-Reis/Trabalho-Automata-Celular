@@ -3,33 +3,33 @@ from time import sleep
 
 import matplotlib.pyplot as plt
 
-def verificaParedeVizinha(lista, lin, col):
-    if lista[lin][col] in (-1, -2):
-        return False
-
-    vizinhos = []
-    x = []
-
-    x.append('lista[lin][col + 1]')
-    x.append('lista[lin][col - 1]')
-    x.append('lista[lin - 1][col]')
-    x.append('lista[lin + 1][col]')
-
-    x.append('lista[lin - 1][col + 1]')
-    x.append('lista[lin - 1][col - 1]')
-    x.append('lista[lin + 1][col + 1]')
-    x.append('lista[lin + 1][col - 1]')
-
-    for i in x:
-        try:
-            vizinhos.append(eval(i))
-        except:
-            pass
-
-    if -1 in vizinhos:
-        return True
-    else:
-        return False
+#def verificaParedeVizinha(lista, lin, col):
+#    if lista[lin][col] in (-1, -2):
+#        return False
+#
+#    vizinhos = []
+#    x = []
+#
+#    x.append('lista[lin][col + 1]')
+#    x.append('lista[lin][col - 1]')
+#    x.append('lista[lin - 1][col]')
+#    x.append('lista[lin + 1][col]')
+#
+#    x.append('lista[lin - 1][col + 1]')
+#    x.append('lista[lin - 1][col - 1]')
+#    x.append('lista[lin + 1][col + 1]')
+#    x.append('lista[lin + 1][col - 1]')
+#
+#    for i in x:
+#        try:
+#            vizinhos.append(eval(i))
+#        except:
+#            pass
+#
+#    if -1 in vizinhos:
+#        return True
+#    else:
+#        return False
 
 def aplicaRegra(vivos, atual, lista_stay, lista_born):
     maior = max(lista_stay)
@@ -115,9 +115,9 @@ def retornaQuantidadeVivosPorCelula(lista, lin, col):
     
     return (qtd_vivos, qtd_mortos)
     
-def atualizaMatriz(lista):
+def atualizaMatriz(lista, artist):
     matrix = np.matrix(lista)
-    plt.imshow(matrix, cmap='Blues_r')
+    artist.set_data(matrix)
     plt.pause(0.1)
 
 def criaGrid(l, c):
