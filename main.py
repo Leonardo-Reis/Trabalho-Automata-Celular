@@ -1,19 +1,18 @@
 from funcs import retornaQuantidadeVivosPorCelula, criaGrid, atualizaMatriz, aplicaRegra
-from time import sleep
 import matplotlib.pyplot as plt
 import numpy as np
 
-colunas = 30
-linhas  = 30
+colunas = 100
+linhas  = 100
 
 lista = criaGrid(linhas, colunas)
 
 #teste = [(12,13),(12,14),(12,15),(14,12),(16,12)]
-#teste = [(10, 10), (10, 11), (10, 12),
-#         (11, 9), (12, 9), (13, 9)]
+teste = [(10, 10), (10, 11), (10, 12),
+         (11, 9), (12, 9), (13, 9)]
 #         
 #         (13, 22), (14, 22), (15, 22)]
-teste = [(13, 10), (14, 10), (15, 10), (15, 11), (14, 12)]
+#teste = [(13, 10), (14, 10), (15, 10), (15, 11), (14, 12)]
 #teste = [(13, 10), (14, 10), (15, 10), (15, 11), (14, 12),
 #         (8,  10) , (9, 10) , (10, 10), (10, 11), (9 , 12)]
 
@@ -49,7 +48,3 @@ while True:
     contador += 1
     lista = lista_copia.copy()
     atualizaMatriz(lista_copia, artist)       
-
-
-
-print(qtd)
