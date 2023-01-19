@@ -1,32 +1,56 @@
-from funcs import retornaQuantidadeVivosPorCelula, criaGrid, atualizaMatriz, aplicaRegra
+from funcs import *
+from regras import *
+from imagens import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-colunas = 100
-linhas  = 100
+funcoes_regra = {
+    1: regraB3_S23,
+    2: regraB3_S236,
+    3: regraB36_S23
+}
 
-lista = criaGrid(linhas, colunas)
+imagens_padrao = {
+    1: replicator,
+    2: glider,
+    3: pulsar,
+    4: gosperGliderGun,
+    5: bomber
+}
 
-#teste = [(12,13),(12,14),(12,15),(14,12),(16,12)]
-teste = [(10, 10), (10, 11), (10, 12),
-         (11, 9), (12, 9), (13, 9)]
-#         
-#         (13, 22), (14, 22), (15, 22)]
-#teste = [(13, 10), (14, 10), (15, 10), (15, 11), (14, 12)]
-#teste = [(13, 10), (14, 10), (15, 10), (15, 11), (14, 12),
-#         (8,  10) , (9, 10) , (10, 10), (10, 11), (9 , 12)]
+lista = criaGrid(50, 50)
 
-for i in teste:
+print("""
+Qual regra deseja aplicar?
+[ 1 ] B3/S23
+[ 2 ] B3/S236
+[ 3 ] B36/S23""")
+opcao = int(input())
+
+regra = funcoes_regra.get(opcao) 
+while not regra:
+    regra = funcoes_regra.get(opcao)   
+    opcao = int(input())
+
+print("""
+Qual padrão de entrada deseja?
+[ 1 ] Replicator
+[ 2 ] Glider 
+[ 3 ] Pulsar
+[ 4 ] Gosper Glider Gun
+[ 5 ] Bomber""")
+opcao2 = int(input())
+
+imagem = imagens_padrao.get(opcao2) 
+while not imagem:
+    imagem = imagens_padrao.get(opcao2)   
+    opcao2 = int(input())
+
+for i in imagem:
     l, c = i
     lista[l][c] = 1
 
 lista_copia = lista.copy()
-
-
-born = [3, 6]
-stay = [2, 3]
-
-contador = 0
 
 artist = plt.imshow(np.matrix(lista), cmap='Blues_r')
 
@@ -42,9 +66,6 @@ while True:
 
             atual = lista[a][b]
 
-            lista_copia[a][b] = aplicaRegra(vivos, atual, stay, born)
-            
-    print(contador)
-    contador += 1
+            lista_copia[a][b] = regra(vivos, atual)
     lista = lista_copia.copy()
     atualizaMatriz(lista_copia, artist)       
