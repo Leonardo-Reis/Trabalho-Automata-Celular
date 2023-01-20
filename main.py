@@ -61,9 +61,6 @@ while True:
         for b in range(0, lista.shape[1]):
             vivos, mortos = retornaQuantidadeVivosPorCelula(lista, a, b)
 
-            if vivos == -1 and mortos == -1:
-               continue
-
             atual = lista[a][b]
 
             lista_copia[a][b] = regra(vivos, atual)

@@ -22,9 +22,6 @@ def aplicaRegra(vivos, atual, lista_stay, lista_born):
     return retorno
     
 def retornaQuantidadeVivosPorCelula(lista, lin, col):
-    if lista[lin][col] == -1:
-        return (-1, -1)
-
     qtd_vivos = 0
     qtd_mortos = 0
 
