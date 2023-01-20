@@ -1,3 +1,6 @@
+# Olá, professor! Se interessar a você, versionamos nosso código no GitHub! 
+# Link: https://github.com/Leonardo-Reis/Trabalho-Automata-Celular
+
 import numpy as np
 import matplotlib.pyplot as plt
 
